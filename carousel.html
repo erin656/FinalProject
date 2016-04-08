@@ -10,32 +10,59 @@
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
-   <style type="text/css">
-   <script src="maps.js"></script>
-  <link href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+<!--     /*header info from bootleaf html*/ -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- <meta name="theme-color" content="#000000"> -->
+
+
+<!--     <link rel="apple-touch-icon" sizes="76x76" href="img/favicon-76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicon-120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicon-152.png">
+    <link rel="icon" sizes="196x196" href="img/favicon-196.png">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico"> -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/yeti/bootstrap.min.css" rel="stylesheet" integrity="sha384-yxFy3Tt84CcGRj9UI7RA25hoUMpUPoFzcdPtK3hBdNgEGnh9FdKgMVM+lbAZTKN2" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
+  <!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css">
     <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.css">
-    <link rel="stylesheet" href="assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.css">
-    <link rel="stylesheet" href="assets/css/app.css">
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/yeti/bootstrap.min.css" rel="stylesheet" integrity="sha384-yxFy3Tt84CcGRj9UI7RA25hoUMpUPoFzcdPtK3hBdNgEGnh9FdKgMVM+lbAZTKN2" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.css"> -->
+   
+ <link rel="stylesheet" href="css/app.css">
+    <style type="text/css">
+
+p{
+  width: 95%;
+  background-color: #FAEBD7;
+  color: black;
+  border-radius: 5px;
+  padding: 30px;
+  font-family: sans-serif;
+     }
+
+/*<div-id= "image">*/
+
+body{
+  background-color: #CD5C5C;
+}
   </style>
 </head>
 
 <body>
- <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
           <div class="navbar-icon-container">
             <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
             <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a>
           </div>
-          <a class="navbar-brand" href="#">BootLeaf</a>
+          <a class="navbar-brand" href="#">Pelham Bay Business District</a>
         </div>
         <div class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" role="search">
@@ -46,159 +73,69 @@
           </form>
           <ul class="nav navbar-nav">
             <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;About</a></li>
-            <li class="dropdown">
+            <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="map-btn"><i class="fa fa-globe white"></i>&nbsp;&nbsp;Map Directory</a></li>
+            <!-- <li class="dropdown">
               <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe white"></i>&nbsp;&nbsp;Tools <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Zoom To Full Extent</a></li>
                 <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="legend-btn"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Show Legend</a></li>
                 <li class="divider hidden-xs"></li>
-                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn"><i class="fa fa-user"></i>&nbsp;&nbsp;Login</a></li>
+                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn"><i class="fa fa-user"></i>&nbsp;&nbsp;Login</a></li> -->
               </ul>
             </li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" id="downloadDrop" href="#" role="button" data-toggle="dropdown"><i class="fa fa-cloud-download white"></i>&nbsp;&nbsp;Download <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Boroughs</a></li>
-                  <li><a href="data/subways.geojson" download="subways.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Subway Lines</a></li>
-                  <li><a href="maps.geojson" download="maps.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Local Businesses</a></li>
-                  <li><a href="data/DOITT_MUSEUM_01_13SEPT2010.geojson" download="museums.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Museums</a></li>
-                </ul>
-            </li>
-            <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;POI List</a></li>
+       <!--      <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;POI List</a></li> -->
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
     </div>
-<!-- <div id="basic"> -->
+<div id="basic">
 <div align = "center">
-<!-- <div id="box"> -->
-<h1> Pelham Bay Business District Directory </h1>
+<!-- <h1> Pelham Bay Business District Directory </h1> -->
 <p> This is a guide to restaurants, shops, and services along Westchester Avenue in the northeastern Bronx neighborhood of Pelham Bay. This growing commercial district combines the transportation access of Amendola Plaza, the natural beauty and amenities of Pelham Bay Park, and a small-neighborhood feel.
 </p>
+
+<img crossorigin="anonymous" a href="img/PBbanner" class="mw-mmv-final-image mw-mmv-dialog-is-open" alt="" width="450" height="450" style="">
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="img_chania.jpg" alt="Chania">
+    </div>
+
+    <div class="item">
+      <img src="img_chania2.jpg" alt="Chania">
+    </div>
+
+    <div class="item">
+      <img src="img_flower.jpg" alt="Flower">
+    </div>
+
+    <div class="item">
+      <img src="img_flower2.jpg" alt="Flower">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
-<div id="map"></div>
 
-  <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-  <script type="text/javascript">
 
-  var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
-});
- 
-var map = L.map('map', {
-  scrollWheelZoom: true,
-  center: [40.852693,-73.827830],
-  zoom: 18
-});
-
-map.addLayer(layer);
-
-// var geojsonMarkerOptions = {
-//     radius: 8,
-//     fillColor: "#ff7800",
-//     color: "#000",
-//     weight: 1,
-//     opacity: 1,
-//     fillOpacity: 0.8
-// };
-
-// L.geoJson(data, {
-//     pointToLayer: function (feature, latlng) {
-//         return L.circleMarker(latlng, geojsonMarkerOptions);
-//     }
-// }).addTo(map);
-
-// var marker = 'maps.geojson'
-
-$.getJSON('maps.geojson', function(myData) {
-  // var layer = L.geoJson(feature).addTo(map);
-  // console.log(feature.Services);
-  //     layer.bindPopup(feature.services).openPopup();
-function onEachFeature (feature, layer) {
-    popupOptions = {maxWidth: 200};
-    layer.bindPopup(feature.properties.Name);
-}
-                            
-L.geoJson(myData, {
-  onEachFeature: onEachFeature
-  }).addTo(map);
-});
-
-// function onEachFeature(feature, layer) {
-//     // does this feature have a property named popupContent?
-//     if (feature.properties && feature.properties.popupContent) {
-//         layer.bindPopup(feature.properties.)
-//     };
-// This is font awesome icon to use for retail businesses
-// <i class="fa fa-shopping-bag"></i>
-// <i class="fa fa-taxi"></i>
-// also used for banks
-// <i class="fa fa-university"></i>
-// <i class="fa fa-camera"></i>
-// <i class="fa fa-coffee"></i>
-// <i class="fa fa-cutlery"></i>
-// <i class="fa fa-map-o"></i>
-// <i class="fa fa-subway"></i>
-// <i class="fa fa-bus"></i>
-// <i class="fa fa-bicycle"></i>
-// var myLayer = L.geoJson(feature).addTo(map);
-// $.getJSON("data/buildings.json", function(json) {
-//   myLayer.addData(json);
-// });
-   // success : function (response) {
-   //      Businesses = L.geoJson(response, {
-            // style: function (feature) {
-            //     return {
-            //         stroke: false,
-            //         fillColor: 'FFFFFF',
-            //         fillOpacity: 0
-            //     };
-            // },
-        //     onEachFeature: function (feature, layer){
-        //         popupOptions = {maxWidth: 200};
-        //         layer.bindPopup( feature.properties.sitename 
-        //             + feature.properties.dog_exercise,popupOptions);
-        //     }
-        // }.addTo(map);
-  
-// function onEachFeature(feature, layer) {
-//     // does this feature have a property named popupContent?
-//     if (feature.properties && feature.properties.popupContent) {
-//         layer.bindPopup(feature.properties.)
-//     };
- <!--  // var Amendola Plaza = [40.706913,-73.987513];
-  // var Wilkinson Plaza = [40.788129,-73.974509];
-  // var Area = [40.852080,-73.827830];
-  // var myZoom = 17;
- -->
-  //  var myMapData = "maps.geojson.js";
-  //  var marker = "maps.geojson.js";
-
-  // myMapData.forEach(function(data) {
-  //   var marker = L.marker(element.coordinates).addTo(map);
-  //   marker.bindPopup(element.Name)
-  // });
-
-   //  var panOptions = {
-   //   animate: true,
-   //   duration: 2
-   // };
-
- // var myMapData = 'maps.geojson'
-
- //  myMapData.forEach(function(data) {
- //    var marker = L.marker(element.coord).addTo(map);
- //    marker.bindPopup(data.Name)});
-
- // $.getJSON('maps.geojson', function(data) {
- //  var myMapData = L.geoJson(data).addTo(map); 
- // })
- 
- // myMapData.forEach(function(element) {
- //    var marker = L.marker(element.coord).addTo(map);
- //    marker.bindPopup("<b>Hello world!</b><br>I am " + element.name)
- //  })
-  </script>
+</div>
 </body>
 </html>
