@@ -2,8 +2,8 @@
 
 p{
   width: 95%;
-  background-color: #FAEBD7;
-/*  background-color: #ADD8E6;*/
+/*  background-color: #FAEBD7;*/
+  background-color: #ADD8E6;
   /*color: black;*/
   color: white;
   border-radius: 5px;
@@ -15,7 +15,7 @@ p{
 
 body{
   background-color: #CD5C5C;
-  background-color: #FFF8DC;
+  /*background-color: #FFF8DC;*/
 }
 
 #basic {
