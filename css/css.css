@@ -15,10 +15,11 @@ p{
 
 body{
   background-color: #CD5C5C;
+  background-color: #FFF8DC;
 }
 
-body{
-  background-color: #FFF8DC;
+#basic {
+ align: center
 }
 
 h1{
