@@ -16,6 +16,9 @@ p{
   font-size: 130%;
 }
 
+.grid-item { width: 200px; }
+.grid-item--width2 { width: 400px; }
+
 #map {
   width: 100%;
   height: 500px;
