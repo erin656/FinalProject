@@ -25,7 +25,7 @@
     <link rel="icon" sizes="196x196" href="img/favicon-196.png">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico"> -->
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/yeti/bootstrap.min.css" rel="stylesheet" integrity="sha384-yxFy3Tt84CcGRj9UI7RA25hoUMpUPoFzcdPtK3hBdNgEGnh9FdKgMVM+lbAZTKN2" crossorigin="anonymous">
-
+<script src="/path/to/masonry.pkgd.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
@@ -148,12 +148,20 @@ body{
 
 $('#myCarousel').carousel();
 
-
+<!-- Attempt at a gallery -->
 <img src="css/img/chase.png" class="img-responsive" alt="Responsive image"> 
 <img src="css/img/citibank.png" class="img-responsive" alt="Responsive image">
 <img src="css/img/keyfoodlogo.jpg" class="img-responsive" alt="Responsive image">
 <img src="css/img/VillaBarone.png" class="img-responsive" alt="Responsive image">
- 
+
+<!-- Masonry Gallery -->
+ <div class="grid">
+  <div class="grid-item"><img src="css/img/chase.png" class="img-responsive" alt="Responsive image"> </div>
+  <div class="grid-item"><img src="css/img/citibank.png" class="img-responsive" alt="Responsive image"></div>
+  <div class="grid-item"><img src="css/img/keyfoodlogo.jpg" class="img-responsive" alt="Responsive image"></div>
+   <div class="grid-item"><img src="css/img/VillaBarone.png" class="img-responsive" alt="Responsive image"></div>
+</div>
+
 </script>
 
 </div>
