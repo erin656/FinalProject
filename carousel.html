@@ -16,11 +16,6 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <!-- <meta name="theme-color" content="#000000"> -->
-<!--     <link rel="apple-touch-icon" sizes="76x76" href="img/favicon-76.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="img/favicon-120.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="img/favicon-152.png">
-    <link rel="icon" sizes="196x196" href="img/favicon-196.png">
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico"> -->
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/yeti/bootstrap.min.css" rel="stylesheet" integrity="sha384-yxFy3Tt84CcGRj9UI7RA25hoUMpUPoFzcdPtK3hBdNgEGnh9FdKgMVM+lbAZTKN2" crossorigin="anonymous">
 <script src="js/masonry.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -56,28 +51,87 @@
           <ul class="nav navbar-nav">
             <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;About</a></li>
             <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="map-btn"><i class="fa fa-globe white"></i>&nbsp;&nbsp;Map Directory</a></li>
-            <!-- <li class="dropdown">
+            <li class="dropdown">
               <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe white"></i>&nbsp;&nbsp;Tools <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Zoom To Full Extent</a></li>
                 <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="legend-btn"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Show Legend</a></li>
                 <li class="divider hidden-xs"></li>
-                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn"><i class="fa fa-user"></i>&nbsp;&nbsp;Login</a></li> -->
+                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn"><i class="fa fa-user"></i>&nbsp;&nbsp;Login</a></li>
               </ul>
             </li>
-       <!--      <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;POI List</a></li> -->
+            <li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;POI List</a></li>
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
     </div>
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+    <!-- Page Text -->
 <div id="basic">
 <div align = "center">
-
 <h1> The Neighborhood of Pelham Bay </h1>
 <p> Pelham Bay is a mostly residential neighborhood where the transportation access of Amendola Plaza, the natural beauty and amenities of Pelham Bay Park, and a small-neighborhood feel combine. The community is committed to preserving the neighborhood's history and character and desire that future investments match with the area's current density. The recent formation of a Business Improvement District is intended to support the existing stock of mostly small businesses in the area and maintain the quality and diversity of service, shopping, and dining establishtments available to the residents, commuters, and tourists who spend time in Pelham Bay.  </p>
 
-<img="anonymous" a href="css/img/PBbanner.jpg" class="mw-mmv-final-image mw-mmv-dialog-is-open" alt="" width="150" height="150" style=""></img="anonymous">
+<!-- 
+<img="anonymous" a href="css/img/PBbanner.jpg" class="mw-mmv-final-image mw-mmv-dialog-is-open" width="150" height="150" style=""></img="anonymous"> -->
 
+<!-- Image Carousel of Neighborhood Photos -->
 <div class="container">
 <div align = "center">
 <br>
@@ -151,14 +205,8 @@ $(document).ready(function(){
 <br>
 <br>
 <br>
-<!-- Attempt at a gallery -->
-<!-- <img src="css/img/chase.png" class="img-responsive" alt="Responsive image"> 
-<img src="css/img/citibank.png" class="img-responsive" alt="Responsive image">
-<img src="css/img/keyfoodlogo.jpg" class="img-responsive" alt="Responsive image">
-<img src="css/img/VillaBarone.png" class="img-responsive" alt="Responsive image">
- -->
-<!-- Masonry Gallery -->
- <!-- <div class="grid"> -->
+
+<!-- Masonry Grid of Sponsors -->
   <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
   <div align = "center">
   <div class="grid-item"><img src="css/img/chase.png"> </div>
