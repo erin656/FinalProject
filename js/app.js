@@ -162,9 +162,9 @@ var businesses = L.geoJson(null, {
     });
   }
 });
-$.getJSON("data/maps.geojson", function (data) {
-  boroughs.addData(data);
-});
+// $.getJSON("data/maps.geojson", function (data) {
+//   boroughs.addData(data);
+// });
 
   /* Single marker cluster layer to hold all clusters */
 var markerClusters = new L.MarkerClusterGroup({
@@ -201,10 +201,10 @@ var businesses = L.geoJson(null, {
         }
       });
       $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="icon/favicon-76.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
-      theaterSearch.push({
+      businessSearch.push({
         name: layer.feature.properties.NAME,
         address: layer.feature.properties.ADDRESS1,
-        source: "Theaters",
+        source: "Businesses",
         id: L.stamp(layer),
         lat: layer.feature.geometry.coordinates[1],
         lng: layer.feature.geometry.coordinates[0]
@@ -262,7 +262,7 @@ $.getJSON("data/maps.geojson", function (data) {
 map = L.map("map", {
   zoom: 10,
   center: [40.702222, -73.979378],
-  layers: [mapquestOSM, boroughs, markerClusters, highlight],
+  layers: [layer, markerClusters, highlight],
   zoomControl: false,
   attributionControl: false
 });
