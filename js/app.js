@@ -73,7 +73,7 @@ function clearHighlight() {
 
 function sidebarClick(id) {
   var layer = markerClusters.getLayer(id);
-  map.setView([layer.getLatLng().lat, layer.getLatLng().lng], 17);
+  map.setView([layer.getLatLng().lat, layer.getLatLng().lng], 19);
   layer.fire("click");
   /* Hide sidebar and go to the map on small screens */
   if (document.body.clientWidth <= 767) {
@@ -116,7 +116,7 @@ function syncSidebar() {
 // map.addLayer(layer);
 
 var mapquestOSM = L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
-  maxZoom: 19,
+  maxZoom: 21,
   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
   attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="https://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.'
 });
@@ -262,7 +262,7 @@ $.getJSON("data/maps.geojson", function (data) {
 // });
 
 map = L.map("map", {
-  zoom: 10,
+  zoom: 18,
   center: [40.702222, -73.979378],
   layers: [mapquestOAM, markerClusters, highlight],
   zoomControl: false,
