@@ -437,7 +437,7 @@ $(document).one("ajaxStop", function () {
   //           source: "GeoNames"
   //         };
         });
-      },
+      // },
       ajax: {
         beforeSend: function (jqXhr, settings) {
           settings.url += "&east=" + map.getBounds().getEast() + "&west=" + map.getBounds().getWest() + "&north=" + map.getBounds().getNorth() + "&south=" + map.getBounds().getSouth();
