@@ -436,7 +436,7 @@ $(document).one("ajaxStop", function () {
   //           lng: result.lng,
   //           source: "GeoNames"
   //         };
-  //       });
+        });
       },
       ajax: {
         beforeSend: function (jqXhr, settings) {
