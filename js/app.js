@@ -1,4 +1,4 @@
-var map, featureList, boroughSearch = [], theaterSearch = [], museumSearch = [];
+var map, featureList, businessSearch = [];
 
 $(window).resize(function() {
   sizeLayerControl();
@@ -85,19 +85,11 @@ function sidebarClick(id) {
 function syncSidebar() {
   /* Empty sidebar features */
   $("#feature-list tbody").empty();
-  /* Loop through theaters layer and add only features which are in the map bounds */
-  theaters.eachLayer(function (layer) {
-    if (map.hasLayer(theaterLayer)) {
+   /* Loop through museums layer and add only features which are in the map bounds */
+  businesses.eachLayer(function (layer) {
+    if (map.hasLayer(businessLayer)) {
       if (map.getBounds().contains(layer.getLatLng())) {
-        $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="assets/img/theater.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
-      }
-    }
-  });
-  /* Loop through museums layer and add only features which are in the map bounds */
-  museums.eachLayer(function (layer) {
-    if (map.hasLayer(museumLayer)) {
-      if (map.getBounds().contains(layer.getLatLng())) {
-        $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="assets/img/museum.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
+        $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="icon/favicon-76.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
       }
     }
   });
@@ -111,24 +103,37 @@ function syncSidebar() {
 }
 
 /* Basemap Layers */
-var mapquestOSM = L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
-  attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="https://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.'
+var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
 });
-var mapquestOAM = L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg", {
-  maxZoom: 18,
-  subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
-  attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>. Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
+
+var map = L.map('map', {
+  scrollWheelZoom: false,
+  center: [40.7127837, -74.0059413],
+  zoom: 6
 });
-var mapquestHYB = L.layerGroup([L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg", {
-  maxZoom: 18,
-  subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"]
-}), L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/hyb/{z}/{x}/{y}.png", {
-  maxZoom: 19,
-  subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
-  attribution: 'Labels courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="https://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA. Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
-})]);
+
+map.addLayer(layer);
+
+// var mapquestOSM = L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
+//   maxZoom: 19,
+//   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
+//   attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="https://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.'
+// });
+
+// var mapquestOAM = L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg", {
+//   maxZoom: 18,
+//   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
+//   attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>. Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
+// });
+// var mapquestHYB = L.layerGroup([L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg", {
+//   maxZoom: 18,
+//   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"]
+// }), L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/hyb/{z}/{x}/{y}.png", {
+//   maxZoom: 19,
+//   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
+//   attribution: 'Labels courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="https://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA. Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
+// })]);
 
 /* Overlay Layers */
 var highlight = L.geoJson(null);
@@ -139,7 +144,7 @@ var highlightStyle = {
   radius: 10
 };
 
-var boroughs = L.geoJson(null, {
+var businesses = L.geoJson(null, {
   style: function (feature) {
     return {
       color: "black",
@@ -149,133 +154,19 @@ var boroughs = L.geoJson(null, {
     };
   },
   onEachFeature: function (feature, layer) {
-    boroughSearch.push({
-      name: layer.feature.properties.BoroName,
-      source: "Boroughs",
+    businessSearch.push({
+      name: layer.feature.properties.Name,
+      source: "features",
       id: L.stamp(layer),
       bounds: layer.getBounds()
     });
   }
 });
-$.getJSON("data/boroughs.geojson", function (data) {
+$.getJSON("data/maps.geojson", function (data) {
   boroughs.addData(data);
 });
 
-var subwayLines = L.geoJson(null, {
-  style: function (feature) {
-    if (feature.properties.route_id === "1" || feature.properties.route_id === "2" || feature.properties.route_id === "3") {
-      return {
-        color: "#ff3135",
-        weight: 3,
-        opacity: 1
-      };
-    }
-    if (feature.properties.route_id === "4" || feature.properties.route_id === "5" || feature.properties.route_id === "6") {
-      return {
-        color: "#009b2e",
-        weight: 3,
-        opacity: 1
-      };
-    }
-    if (feature.properties.route_id === "7") {
-      return {
-        color: "#ce06cb",
-        weight: 3,
-        opacity: 1
-      };
-    }
-    if (feature.properties.route_id === "A" || feature.properties.route_id === "C" || feature.properties.route_id === "E" || feature.properties.route_id === "SI" || feature.properties.route_id === "H") {
-      return {
-        color: "#fd9a00",
-        weight: 3,
-        opacity: 1
-      };
-    }
-    if (feature.properties.route_id === "Air") {
-      return {
-        color: "#ffff00",
-        weight: 3,
-        opacity: 1
-      };
-    }
-    if (feature.properties.route_id === "B" || feature.properties.route_id === "D" || feature.properties.route_id === "F" || feature.properties.route_id === "M") {
-      return {
-        color: "#ffff00",
-        weight: 3,
-        opacity: 1
-      };
-    }
-    if (feature.properties.route_id === "G") {
-      return {
-        color: "#9ace00",
-        weight: 3,
-        opacity: 1
-      };
-    }
-    if (feature.properties.route_id === "FS" || feature.properties.route_id === "GS") {
-      return {
-        color: "#6e6e6e",
-        weight: 3,
-        opacity: 1
-      };
-    }
-    if (feature.properties.route_id === "J" || feature.properties.route_id === "Z") {
-      return {
-        color: "#976900",
-        weight: 3,
-        opacity: 1
-      };
-    }
-    if (feature.properties.route_id === "L") {
-      return {
-        color: "#969696",
-        weight: 3,
-        opacity: 1
-      };
-    }
-    if (feature.properties.route_id === "N" || feature.properties.route_id === "Q" || feature.properties.route_id === "R") {
-      return {
-        color: "#ffff00",
-        weight: 3,
-        opacity: 1
-      };
-    }
-  },
-  onEachFeature: function (feature, layer) {
-    if (feature.properties) {
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Division</th><td>" + feature.properties.Division + "</td></tr>" + "<tr><th>Line</th><td>" + feature.properties.Line + "</td></tr>" + "<table>";
-      layer.on({
-        click: function (e) {
-          $("#feature-title").html(feature.properties.Line);
-          $("#feature-info").html(content);
-          $("#featureModal").modal("show");
-
-        }
-      });
-    }
-    layer.on({
-      mouseover: function (e) {
-        var layer = e.target;
-        layer.setStyle({
-          weight: 3,
-          color: "#00FFFF",
-          opacity: 1
-        });
-        if (!L.Browser.ie && !L.Browser.opera) {
-          layer.bringToFront();
-        }
-      },
-      mouseout: function (e) {
-        subwayLines.resetStyle(e.target);
-      }
-    });
-  }
-});
-$.getJSON("data/subways.geojson", function (data) {
-  subwayLines.addData(data);
-});
-
-/* Single marker cluster layer to hold all clusters */
+  /* Single marker cluster layer to hold all clusters */
 var markerClusters = new L.MarkerClusterGroup({
   spiderfyOnMaxZoom: true,
   showCoverageOnHover: false,
