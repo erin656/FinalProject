@@ -262,7 +262,7 @@ $.getJSON("data/maps.geojson", function (data) {
 // });
 
 map = L.map("map", {
-  zoom: 19,
+  zoom: 18,
   center: [40.852413,-73.827294],
   layers: [mapquestOAM, markerClusters, highlight],
   zoomControl: false,
@@ -373,7 +373,7 @@ var baseLayers = {
 };
 
 var groupedOverlays = {
-  "Points of Interest": {
+  "Businesses": {
     "<img src='css/icon/favicon-76.png' width='24' height='28'>&nbsp;Businesses": businessLayer,
      // },
   // "Reference": {
