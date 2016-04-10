@@ -262,8 +262,8 @@ $.getJSON("data/maps.geojson", function (data) {
 // });
 
 map = L.map("map", {
-  zoom: 18,
-  center: [40.702222, -73.979378],
+  zoom: 19,
+  center: [40.852413,-73.827294],
   layers: [mapquestOAM, markerClusters, highlight],
   zoomControl: false,
   attributionControl: false
