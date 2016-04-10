@@ -103,37 +103,37 @@ function syncSidebar() {
 }
 
 /* Basemap Layers */
-var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
-});
-
-var map = L.map('map', {
-  scrollWheelZoom: false,
-  center: [40.7127837, -74.0059413],
-  zoom: 6
-});
-
-map.addLayer(layer);
-
-// var mapquestOSM = L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
-//   maxZoom: 19,
-//   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
-//   attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="https://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.'
+// var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+//   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
 // });
 
-// var mapquestOAM = L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg", {
-//   maxZoom: 18,
-//   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
-//   attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>. Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
+// var map = L.map('map', {
+//   scrollWheelZoom: false,
+//   center: [40.7127837, -74.0059413],
+//   zoom: 6
 // });
-// var mapquestHYB = L.layerGroup([L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg", {
-//   maxZoom: 18,
-//   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"]
-// }), L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/hyb/{z}/{x}/{y}.png", {
-//   maxZoom: 19,
-//   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
-//   attribution: 'Labels courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="https://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA. Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
-// })]);
+
+// map.addLayer(layer);
+
+var mapquestOSM = L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
+  attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="https://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.'
+});
+
+var mapquestOAM = L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg", {
+  maxZoom: 18,
+  subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
+  attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>. Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
+});
+var mapquestHYB = L.layerGroup([L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg", {
+  maxZoom: 18,
+  subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"]
+}), L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/hyb/{z}/{x}/{y}.png", {
+  maxZoom: 19,
+  subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
+  attribution: 'Labels courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="https://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA. Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
+})]);
 
 /* Overlay Layers */
 var highlight = L.geoJson(null);
@@ -262,7 +262,7 @@ $.getJSON("data/maps.geojson", function (data) {
 map = L.map("map", {
   zoom: 10,
   center: [40.702222, -73.979378],
-  layers: [layer, markerClusters, highlight],
+  layers: [mapquestOAM, markerClusters, highlight],
   zoomControl: false,
   attributionControl: false
 });
