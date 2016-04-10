@@ -116,18 +116,18 @@ function syncSidebar() {
 // map.addLayer(layer);
 
 var mapquestOSM = L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
-  maxZoom: 21,
+  maxZoom: 19,
   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
   attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="https://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.'
 });
 
 var mapquestOAM = L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg", {
-  maxZoom: 18,
+  maxZoom: 19,
   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
   attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>. Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
 });
 var mapquestHYB = L.layerGroup([L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg", {
-  maxZoom: 18,
+  maxZoom: 19,
   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"]
 }), L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/hyb/{z}/{x}/{y}.png", {
   maxZoom: 19,
@@ -171,7 +171,7 @@ var markerClusters = new L.MarkerClusterGroup({
   spiderfyOnMaxZoom: true,
   showCoverageOnHover: false,
   zoomToBoundsOnClick: true,
-  disableClusteringAtZoom: 16
+  disableClusteringAtZoom: 19
 });
 
 /* Empty layer placeholder to add to layer control for listening when to add/remove theaters to markerClusters layer */
@@ -185,7 +185,7 @@ var businesses = L.geoJson(null, {
         iconAnchor: [12, 28],
         popupAnchor: [0, -25]
       }),
-      title: feature.properties.NAME,
+      title: feature.properties.Name,
       riseOnHover: true
     });
   },
@@ -196,7 +196,7 @@ var businesses = L.geoJson(null, {
       + "<table>";
       layer.on({
         click: function (e) {
-          $("#feature-title").html(feature.properties.NAME);
+          $("#feature-title").html(feature.properties.Name);
           $("#feature-info").html(content);
           $("#featureModal").modal("show");
           highlight.clearLayers().addLayer(L.circleMarker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], highlightStyle));
@@ -351,7 +351,7 @@ var locateControl = L.control.locate({
     outsideMapBoundsMsg: "You seem located outside the boundaries of the map"
   },
   locateOptions: {
-    maxZoom: 18,
+    maxZoom: 19,
     watch: true,
     enableHighAccuracy: true,
     maximumAge: 10000,
@@ -375,11 +375,7 @@ var baseLayers = {
 var groupedOverlays = {
   "Businesses": {
     "<img src='css/icon/favicon-76.png' width='24' height='28'>&nbsp;Businesses": businessLayer,
-     // },
-  // "Reference": {
-  //   // "Boroughs": boroughs,
-  //   "Subway Lines": subwayLines
-  }
+   }
 };
 
 var layerControl = L.control.groupedLayers(baseLayers, groupedOverlays, {
