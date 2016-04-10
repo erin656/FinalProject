@@ -436,20 +436,20 @@ $(document).one("ajaxStop", function () {
   //           lng: result.lng,
   //           source: "GeoNames"
   //         };
-        });
+        // });
       // },
-      ajax: {
-        beforeSend: function (jqXhr, settings) {
-          settings.url += "&east=" + map.getBounds().getEast() + "&west=" + map.getBounds().getWest() + "&north=" + map.getBounds().getNorth() + "&south=" + map.getBounds().getSouth();
-          $("#searchicon").removeClass("fa-search").addClass("fa-refresh fa-spin");
-        },
-        complete: function (jqXHR, status) {
-          $('#searchicon').removeClass("fa-refresh fa-spin").addClass("fa-search");
-        }
-      }
-    },
-    limit: 10
-  });
+  //     ajax: {
+  //       beforeSend: function (jqXhr, settings) {
+  //         settings.url += "&east=" + map.getBounds().getEast() + "&west=" + map.getBounds().getWest() + "&north=" + map.getBounds().getNorth() + "&south=" + map.getBounds().getSouth();
+  //         $("#searchicon").removeClass("fa-search").addClass("fa-refresh fa-spin");
+  //       },
+  //       complete: function (jqXHR, status) {
+  //         $('#searchicon').removeClass("fa-refresh fa-spin").addClass("fa-search");
+  //       }
+  //     }
+  //   },
+  //   limit: 10
+  // });
   // boroughsBH.initialize();
   businessessBH.initialize();
   // museumsBH.initialize();
