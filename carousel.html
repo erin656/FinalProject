@@ -120,27 +120,7 @@
   </a>
 </div>
 </div>
-<!-- $('#myCarousel').carousel(); -->
-<br>
-<br>
-<br>
-<!-- Attempt at a gallery -->
-<!-- <img src="css/img/chase.png" class="img-responsive" alt="Responsive image"> 
-<img src="css/img/citibank.png" class="img-responsive" alt="Responsive image">
-<img src="css/img/keyfoodlogo.jpg" class="img-responsive" alt="Responsive image">
-<img src="css/img/VillaBarone.png" class="img-responsive" alt="Responsive image">
- -->
-<!-- Masonry Gallery -->
- <!-- <div class="grid"> -->
-  <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
-  <div align = "center">
-  <div class="grid-item"><img src="css/img/chase.png"> </div>
-  <div class="grid-item" "grid-item--width2"><img src="css/img/citibank.png"></div>
-  <div class="grid-item" "grid-item--width4"><img src="css/img/keyfoodlogo.jpg"></div>
-  <div class="grid-item" "grid-item--width4"><img src="css/img/VillaBarone.png"></div>
-  </div>
 
-<script>
 $(document).ready(function(){
     // Activate Carousel
     $("#myCarousel").carousel();
@@ -167,6 +147,41 @@ $(document).ready(function(){
         $("#myCarousel").carousel("next");
     });
 });
+<!-- $('#myCarousel').carousel(); -->
+<br>
+<br>
+<br>
+<!-- Attempt at a gallery -->
+<!-- <img src="css/img/chase.png" class="img-responsive" alt="Responsive image"> 
+<img src="css/img/citibank.png" class="img-responsive" alt="Responsive image">
+<img src="css/img/keyfoodlogo.jpg" class="img-responsive" alt="Responsive image">
+<img src="css/img/VillaBarone.png" class="img-responsive" alt="Responsive image">
+ -->
+<!-- Masonry Gallery -->
+ <!-- <div class="grid"> -->
+  <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
+  <div align = "center">
+  <div class="grid-item"><img src="css/img/chase.png"> </div>
+  <div class="grid-item" "grid-item--width2"><img src="css/img/citibank.png"></div>
+  <div class="grid-item" "grid-item--width4"><img src="css/img/keyfoodlogo.jpg"></div>
+  <div class="grid-item" "grid-item--width4"><img src="css/img/VillaBarone.png"></div>
+  </div>
+
+  var elem = document.querySelector('.grid');
+var msnry = new Masonry( elem, {
+  // options
+  itemSelector: '.grid-item',
+  columnWidth: 200
+});
+
+// element argument can be a selector string
+//   for an individual element
+var msnry = new Masonry( '.grid', {
+  // options
+});
+
+<script>
+
 </script>
 </script>
 
