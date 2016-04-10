@@ -406,57 +406,37 @@ $(document).one("ajaxStop", function () {
   $("#loading").hide();
   sizeLayerControl();
   /* Fit map to boroughs bounds */
-  map.fitBounds(boroughs.getBounds());
-  featureList = new List("features", {valueNames: ["feature-name"]});
-  featureList.sort("feature-name", {order:"asc"});
+  // map.fitBounds(boroughs.getBounds());
+  // featureList = new List("features", {valueNames: ["feature-name"]});
+  // featureList.sort("feature-name", {order:"asc"});
 
-  var boroughsBH = new Bloodhound({
-    name: "Boroughs",
+  var businessesBH = new Bloodhound({
+    name: "Businesses",
     datumTokenizer: function (d) {
       return Bloodhound.tokenizers.whitespace(d.name);
     },
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    local: boroughSearch,
+    local: businessSearch,
     limit: 10
   });
 
-  var theatersBH = new Bloodhound({
-    name: "Theaters",
-    datumTokenizer: function (d) {
-      return Bloodhound.tokenizers.whitespace(d.name);
-    },
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    local: theaterSearch,
-    limit: 10
-  });
-
-  var museumsBH = new Bloodhound({
-    name: "Museums",
-    datumTokenizer: function (d) {
-      return Bloodhound.tokenizers.whitespace(d.name);
-    },
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    local: museumSearch,
-    limit: 10
-  });
-
-  var geonamesBH = new Bloodhound({
-    name: "GeoNames",
-    datumTokenizer: function (d) {
-      return Bloodhound.tokenizers.whitespace(d.name);
-    },
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    remote: {
-      url: "http://api.geonames.org/searchJSON?username=bootleaf&featureClass=P&maxRows=5&countryCode=US&name_startsWith=%QUERY",
-      filter: function (data) {
-        return $.map(data.geonames, function (result) {
-          return {
-            name: result.name + ", " + result.adminCode1,
-            lat: result.lat,
-            lng: result.lng,
-            source: "GeoNames"
-          };
-        });
+  // var geonamesBH = new Bloodhound({
+  //   name: "GeoNames",
+  //   datumTokenizer: function (d) {
+  //     return Bloodhound.tokenizers.whitespace(d.name);
+  //   },
+  //   queryTokenizer: Bloodhound.tokenizers.whitespace,
+  //   remote: {
+  //     url: "http://api.geonames.org/searchJSON?username=bootleaf&featureClass=P&maxRows=5&countryCode=US&name_startsWith=%QUERY",
+  //     filter: function (data) {
+  //       return $.map(data.geonames, function (result) {
+  //         return {
+  //           name: result.name + ", " + result.adminCode1,
+  //           lat: result.lat,
+  //           lng: result.lng,
+  //           source: "GeoNames"
+  //         };
+  //       });
       },
       ajax: {
         beforeSend: function (jqXhr, settings) {
@@ -470,71 +450,71 @@ $(document).one("ajaxStop", function () {
     },
     limit: 10
   });
-  boroughsBH.initialize();
-  theatersBH.initialize();
-  museumsBH.initialize();
-  geonamesBH.initialize();
+  // boroughsBH.initialize();
+  businessessBH.initialize();
+  // museumsBH.initialize();
+  // geonamesBH.initialize();
 
   /* instantiate the typeahead UI */
   $("#searchbox").typeahead({
     minLength: 3,
     highlight: true,
     hint: false
+  // }, {
+  //   name: "Boroughs",
+  //   displayKey: "name",
+  //   source: boroughsBH.ttAdapter(),
+  //   templates: {
+  //     header: "<h4 class='typeahead-header'>Boroughs</h4>"
+  //   }
+  // }, {
+  //   name: "Theaters",
+  //   displayKey: "name",
+  //   source: theatersBH.ttAdapter(),
+  //   templates: {
+  //     header: "<h4 class='typeahead-header'><img src='assets/img/theater.png' width='24' height='28'>&nbsp;Theaters</h4>",
+  //     suggestion: Handlebars.compile(["{{name}}<br>&nbsp;<small>{{address}}</small>"].join(""))
+  //   }
   }, {
-    name: "Boroughs",
+    name: "Businesses",
     displayKey: "name",
-    source: boroughsBH.ttAdapter(),
+    source: businessesBH.ttAdapter(),
     templates: {
-      header: "<h4 class='typeahead-header'>Boroughs</h4>"
-    }
-  }, {
-    name: "Theaters",
-    displayKey: "name",
-    source: theatersBH.ttAdapter(),
-    templates: {
-      header: "<h4 class='typeahead-header'><img src='assets/img/theater.png' width='24' height='28'>&nbsp;Theaters</h4>",
+      header: "<h4 class='typeahead-header'><img src='icon/favicon-76.png' width='24' height='28'>&nbsp;Businesses</h4>",
       suggestion: Handlebars.compile(["{{name}}<br>&nbsp;<small>{{address}}</small>"].join(""))
     }
-  }, {
-    name: "Museums",
-    displayKey: "name",
-    source: museumsBH.ttAdapter(),
-    templates: {
-      header: "<h4 class='typeahead-header'><img src='assets/img/museum.png' width='24' height='28'>&nbsp;Museums</h4>",
-      suggestion: Handlebars.compile(["{{name}}<br>&nbsp;<small>{{address}}</small>"].join(""))
-    }
-  }, {
-    name: "GeoNames",
-    displayKey: "name",
-    source: geonamesBH.ttAdapter(),
-    templates: {
-      header: "<h4 class='typeahead-header'><img src='assets/img/globe.png' width='25' height='25'>&nbsp;GeoNames</h4>"
-    }
+  // }, {
+  //   name: "GeoNames",
+  //   displayKey: "name",
+  //   source: geonamesBH.ttAdapter(),
+  //   templates: {
+  //     header: "<h4 class='typeahead-header'><img src='assets/img/globe.png' width='25' height='25'>&nbsp;GeoNames</h4>"
+  //   }
   }).on("typeahead:selected", function (obj, datum) {
     if (datum.source === "Boroughs") {
       map.fitBounds(datum.bounds);
     }
-    if (datum.source === "Theaters") {
-      if (!map.hasLayer(theaterLayer)) {
-        map.addLayer(theaterLayer);
+    // if (datum.source === "Theaters") {
+    //   if (!map.hasLayer(theaterLayer)) {
+    //     map.addLayer(theaterLayer);
+    //   }
+    //   map.setView([datum.lat, datum.lng], 17);
+    //   if (map._layers[datum.id]) {
+    //     map._layers[datum.id].fire("click");
+    //   }
+    // }
+    if (datum.source === "Businesses") {
+      if (!map.hasLayer(businessLayer)) {
+        map.addLayer(businessLayer);
       }
       map.setView([datum.lat, datum.lng], 17);
       if (map._layers[datum.id]) {
         map._layers[datum.id].fire("click");
       }
     }
-    if (datum.source === "Museums") {
-      if (!map.hasLayer(museumLayer)) {
-        map.addLayer(museumLayer);
-      }
-      map.setView([datum.lat, datum.lng], 17);
-      if (map._layers[datum.id]) {
-        map._layers[datum.id].fire("click");
-      }
-    }
-    if (datum.source === "GeoNames") {
-      map.setView([datum.lat, datum.lng], 14);
-    }
+    // if (datum.source === "GeoNames") {
+    //   map.setView([datum.lat, datum.lng], 14);
+    // }
     if ($(".navbar-collapse").height() > 50) {
       $(".navbar-collapse").collapse("hide");
     }
