@@ -42,9 +42,9 @@ h1{
 
   /*Sponsor Grid Styling*/
 .grid-item { width: 200px; }
-.grid-item--width2 { width: 100px; }
-.grid-item--width3 { width: 400px; }
-.grid-item--width4 { width: 600px; }
+.grid-item-width2 { width: 100px; }
+.grid-item-width3 { width: 400px; }
+.grid-item-width4 { width: 600px; }
 
 /*Web Map Styling*/
 #map {

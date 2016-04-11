@@ -58,6 +58,15 @@
     </div>
 <!-- End of Navbar Code -->
 
+ <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Welcome to Pelham Bay!</h4>
+          </div>
+          <div class="modal-body">
+            <ul class="nav nav-tabs nav-justified" id="aboutTabs">
  <div class="tab-content" id="aboutTabsContent">
               <div class="tab-pane fade active in" id="about">
                 <p> This web map business directory is a guide to restaurants, shops, and services in the Pelham Bay Business District located along Westchester Avenue in the northeastern Bronx neighborhood of Pelham Bay.</p>
@@ -69,25 +78,25 @@
 <h1> The Neighborhood of Pelham Bay </h1>
 <p> Pelham Bay is a mostly residential neighborhood where the transportation access of Amendola Plaza, the natural beauty and amenities of Pelham Bay Park, and a small-neighborhood feel combine. The community is committed to preserving the neighborhood's history and character and desire that future investments match with the area's current density. The recent formation of a Business Improvement District is intended to support the existing stock of mostly small businesses in the area and maintain the quality and diversity of service, shopping, and dining establishtments available to the residents, commuters, and tourists who spend time in Pelham Bay.  </p>
 
-<!-- 
-<img="anonymous" a href="css/img/PBbanner.jpg" class="mw-mmv-final-image mw-mmv-dialog-is-open" width="150" height="150" style=""></img="anonymous"> -->
+
+<img="anonymous" a href="css/img/PBbanner.jpg" class="mw-mmv-final-image mw-mmv-dialog-is-open" width="150" height="150" style=""></img="anonymous">
 
 <!-- Image Carousel of Neighborhood Photos -->
-<div class="container">
+<!-- The image carousel is broken, but it will be included in future -->
+<!-- <div class="container">
 <div align = "center">
 <br>
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide" data-ride="carousel"> -->
   <!-- Indicators -->
-  <ol class="carousel-indicators">
+ <!--  <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
     <li data-target="#myCarousel" data-slide-to="3"></li>
     <li data-target="#myCarousel" data-slide-to="3"></li>
-  </ol>
-
+  </ol> -->
   <!-- Wrapper for slides -->
- <div class="carousel-inner" role="listbox">
+ <!-- <div class="carousel-inner" role="listbox">
     <div class="item active">
       <img src="css/img/PB.jpg" alt="Welcome to Pelham Bay">
     </div>
@@ -103,19 +112,18 @@
     <div class="item">
       <img src="css/img/villabaronepic.jpg">
     </div>
-  </div>
-
+  </div> -->
 <!-- Carousel Controls -->
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+ <!--  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
   <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+    <span class="sr-only">Next</span> -->
+ <!--  </a>
 </div>
-</div>
+</div> -->
 
 <!-- $(document).ready(function(){
     // Activate Carousel
@@ -144,18 +152,17 @@
     });
 }); -->
 <!-- $('#myCarousel').carousel(); -->
-<br>
-<br>
-<br>
+
 
 <!-- Masonry Grid of Sponsors -->
-  <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
+<!-- This isn't working properly, but will be in future versions of the page -->
+<!--   <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'>
   <div align = "center">
   <div class="grid-item"><img src="css/img/chase.png"> </div>
-  <div class="grid-item" "grid-item--width2"><img src="css/img/citibank.png"></div>
-  <div class="grid-item" "grid-item--width4"><img src="css/img/keyfoodlogo.jpg"></div>
-  <div class="grid-item" "grid-item--width4"><img src="css/img/VillaBarone.png"></div>
-  </div>
+  <div class="grid-item" "grid-item-width2"><img src="css/img/citibank.png"></div>
+  <div class="grid-item" "grid-item-width4"><img src="css/img/keyfoodlogo.jpg"></div>
+  <div class="grid-item" "grid-item-width4"><img src="css/img/VillaBarone.png"></div>
+  </div> -->
 
   <!-- var elem = document.querySelector('.grid');
 var msnry = new Masonry( elem, {
@@ -170,7 +177,6 @@ var msnry = new Masonry( '.grid', {
   // options
 });
  -->
-<script>
 
 </script>
 </script>
