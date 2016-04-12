@@ -207,7 +207,7 @@ $.getJSON("data/maps.geojson", function (data) {
 });
 
 map = L.map("map", {
-  zoom: 18,
+  zoom: 17,
   center: [40.852413,-73.827294],
   layers: [mapquestOAM, markerClusters, highlight],
   zoomControl: false,
