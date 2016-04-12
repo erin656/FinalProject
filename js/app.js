@@ -89,7 +89,7 @@ function syncSidebar() {
   businesses.eachLayer(function (layer) {
     if (map.hasLayer(businessLayer)) {
       if (map.getBounds().contains(layer.getLatLng())) {
-        $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="css/icon/favicon-76.png"></td><td class="feature-name">' + layer.feature.properties.Name + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
+        $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="css/icon/Shop-128.png"></td><td class="feature-name">' + layer.feature.properties.Name + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
       }
     }
   });
@@ -116,21 +116,21 @@ function syncSidebar() {
 // map.addLayer(layer);
 
 var mapquestOSM = L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
-  maxZoom: 19,
+  maxZoom: 20,
   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
   attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="https://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA.'
 });
 
 var mapquestOAM = L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg", {
-  maxZoom: 19,
+  maxZoom: 18,
   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
   attribution: 'Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a>. Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
 });
 var mapquestHYB = L.layerGroup([L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg", {
-  maxZoom: 19,
+  maxZoom: 18,
   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"]
 }), L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/hyb/{z}/{x}/{y}.png", {
-  maxZoom: 19,
+  maxZoom: 18,
   subdomains: ["otile1-s", "otile2-s", "otile3-s", "otile4-s"],
   attribution: 'Labels courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="https://developer.mapquest.com/content/osm/mq_logo.png">. Map data (c) <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> contributors, CC-BY-SA. Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
 })]);
@@ -180,7 +180,7 @@ var businesses = L.geoJson(null, {
   pointToLayer: function (feature, latlng) {
     return L.marker(latlng, {
       icon: L.icon({
-        iconUrl: "css/icon/favicon-76.png",
+        iconUrl: "css/icon/Shop-128.png",
         iconSize: [24, 28],
         iconAnchor: [12, 28],
         popupAnchor: [0, -25]
@@ -202,7 +202,7 @@ var businesses = L.geoJson(null, {
           highlight.clearLayers().addLayer(L.circleMarker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], highlightStyle));
         }
       });
-      $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="css/icon/favicon-76.png"></td><td class="feature-name">' + layer.feature.properties.Name + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
+      $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="css/icon/Shop-128.png"></td><td class="feature-name">' + layer.feature.properties.Name + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
       businessSearch.push({
         name: layer.feature.properties.Name,
         address: layer.feature.properties.ADDRESS1,
@@ -351,7 +351,7 @@ var locateControl = L.control.locate({
     outsideMapBoundsMsg: "You seem located outside the boundaries of the map"
   },
   locateOptions: {
-    maxZoom: 19,
+    maxZoom: 18,
     watch: true,
     enableHighAccuracy: true,
     maximumAge: 10000,
@@ -374,7 +374,7 @@ var baseLayers = {
 
 var groupedOverlays = {
   "Businesses": {
-    "<img src='css/icon/favicon-76.png' width='24' height='28'>&nbsp;Businesses": businessLayer,
+    "<img src='css/icon/Shop-128.png' width='24' height='28'>&nbsp;Businesses": businessLayer,
    }
 };
 
@@ -477,7 +477,7 @@ $(document).one("ajaxStop", function () {
     displayKey: "name",
     source: businessesBH.ttAdapter(),
     templates: {
-      header: "<h4 class='typeahead-header'><img src='css/icon/favicon-76.png' width='24' height='28'>&nbsp;Businesses</h4>",
+      header: "<h4 class='typeahead-header'><img src='css/icon/Shop-128.png' width='24' height='28'>&nbsp;Businesses</h4>",
       suggestion: Handlebars.compile(["{{name}}<br>&nbsp;<small>{{address}}</small>"].join(""))
     }
   // }, {
