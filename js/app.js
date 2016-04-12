@@ -85,7 +85,7 @@ function sidebarClick(id) {
 function syncSidebar() {
   /* Empty sidebar features */
   $("#feature-list tbody").empty();
-   /* Loop through museums layer and add only features which are in the map bounds */
+   /* Loop through business layer and add only features which are in the map bounds */
   businesses.eachLayer(function (layer) {
     if (map.hasLayer(businessLayer)) {
       if (map.getBounds().contains(layer.getLatLng())) {
@@ -103,17 +103,6 @@ function syncSidebar() {
 }
 
 /* Basemap Layers */
-// var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-//   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
-// });
-
-// var map = L.map('map', {
-//   scrollWheelZoom: false,
-//   center: [40.7127837, -74.0059413],
-//   zoom: 6
-// });
-
-// map.addLayer(layer);
 
 var mapquestOSM = L.tileLayer("https://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png", {
   maxZoom: 20,
@@ -191,9 +180,7 @@ var businesses = L.geoJson(null, {
   },
   onEachFeature: function (feature, layer) {
     if (feature.properties) {
-      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Name</th><td>" + feature.properties.Name + "</td></tr>" + "<tr><th>Address</th><td>" + feature.properties.Address + "</td></tr>" 
-      // + "<tr><th>Website</th><td><a class='url-break' href='" + feature.properties.URL + "' target='_blank'>" + feature.properties.URL + "</a></td></tr>" 
-      + "<table>";
+      var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Name</th><td>" + feature.properties.Name + "</td></tr>" + "<tr><th>Address</th><td>" + feature.properties.Address + "</td></tr>" + "<table>";
       layer.on({
         click: function (e) {
           $("#feature-title").html(feature.properties.Name);
@@ -219,48 +206,6 @@ $.getJSON("data/maps.geojson", function (data) {
   map.addLayer(businessLayer);
 });
 
-/* Empty layer placeholder to add to layer control for listening when to add/remove museums to markerClusters layer */
-// var museumLayer = L.geoJson(null);
-// var museums = L.geoJson(null, {
-//   pointToLayer: function (feature, latlng) {
-//     return L.marker(latlng, {
-//       icon: L.icon({
-//         iconUrl: "assets/img/museum.png",
-//         iconSize: [24, 28],
-//         iconAnchor: [12, 28],
-//         popupAnchor: [0, -25]
-//       }),
-//       title: feature.properties.NAME,
-//       riseOnHover: true
-//     });
-//   },
-//   onEachFeature: function (feature, layer) {
-//     if (feature.properties) {
-//       var content = "<table class='table table-striped table-bordered table-condensed'>" + "<tr><th>Name</th><td>" + feature.properties.NAME + "</td></tr>" + "<tr><th>Phone</th><td>" + feature.properties.TEL + "</td></tr>" + "<tr><th>Address</th><td>" + feature.properties.ADRESS1 + "</td></tr>" + "<tr><th>Website</th><td><a class='url-break' href='" + feature.properties.URL + "' target='_blank'>" + feature.properties.URL + "</a></td></tr>" + "<table>";
-//       layer.on({
-//         click: function (e) {
-//           $("#feature-title").html(feature.properties.NAME);
-//           $("#feature-info").html(content);
-//           $("#featureModal").modal("show");
-//           highlight.clearLayers().addLayer(L.circleMarker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], highlightStyle));
-//         }
-//       });
-//       $("#feature-list tbody").append('<tr class="feature-row" id="' + L.stamp(layer) + '" lat="' + layer.getLatLng().lat + '" lng="' + layer.getLatLng().lng + '"><td style="vertical-align: middle;"><img width="16" height="18" src="assets/img/museum.png"></td><td class="feature-name">' + layer.feature.properties.NAME + '</td><td style="vertical-align: middle;"><i class="fa fa-chevron-right pull-right"></i></td></tr>');
-//       museumSearch.push({
-//         name: layer.feature.properties.NAME,
-//         address: layer.feature.properties.ADRESS1,
-//         source: "Museums",
-//         id: L.stamp(layer),
-//         lat: layer.feature.geometry.coordinates[1],
-//         lng: layer.feature.geometry.coordinates[0]
-//       });
-//     }
-//   }
-// });
-// $.getJSON("data/DOITT_MUSEUM_01_13SEPT2010.geojson", function (data) {
-//   museums.addData(data);
-// });
-
 map = L.map("map", {
   zoom: 18,
   center: [40.852413,-73.827294],
@@ -275,10 +220,6 @@ map.on("overlayadd", function(e) {
     markerClusters.addLayer(businesses);
     syncSidebar();
   }
-  // if (e.layer === museumLayer) {
-  //   markerClusters.addLayer(museums);
-  //   syncSidebar();
-  // }
 });
 
 map.on("overlayremove", function(e) {
@@ -286,10 +227,6 @@ map.on("overlayremove", function(e) {
     markerClusters.removeLayer(businesses);
     syncSidebar();
   }
-  // if (e.layer === museumLayer) {
-  //   markerClusters.removeLayer(museums);
-  //   syncSidebar();
-  // }
 });
 
 /* Filter sidebar feature list to only show features in current map bounds */
@@ -402,10 +339,6 @@ $("#featureModal").on("hidden.bs.modal", function (e) {
 $(document).one("ajaxStop", function () {
   $("#loading").hide();
   sizeLayerControl();
-  /* Fit map to boroughs bounds */
-  // map.fitBounds(boroughs.getBounds());
-  // featureList = new List("features", {valueNames: ["feature-name"]});
-  // featureList.sort("feature-name", {order:"asc"});
 
   var businessesBH = new Bloodhound({
     name: "Businesses",
@@ -417,61 +350,13 @@ $(document).one("ajaxStop", function () {
     limit: 10
   });
 
-  // var geonamesBH = new Bloodhound({
-  //   name: "GeoNames",
-  //   datumTokenizer: function (d) {
-  //     return Bloodhound.tokenizers.whitespace(d.name);
-  //   },
-  //   queryTokenizer: Bloodhound.tokenizers.whitespace,
-  //   remote: {
-  //     url: "http://api.geonames.org/searchJSON?username=bootleaf&featureClass=P&maxRows=5&countryCode=US&name_startsWith=%QUERY",
-  //     filter: function (data) {
-  //       return $.map(data.geonames, function (result) {
-  //         return {
-  //           name: result.name + ", " + result.adminCode1,
-  //           lat: result.lat,
-  //           lng: result.lng,
-  //           source: "GeoNames"
-  //         };
-        // });
-      // },
-  //     ajax: {
-  //       beforeSend: function (jqXhr, settings) {
-  //         settings.url += "&east=" + map.getBounds().getEast() + "&west=" + map.getBounds().getWest() + "&north=" + map.getBounds().getNorth() + "&south=" + map.getBounds().getSouth();
-  //         $("#searchicon").removeClass("fa-search").addClass("fa-refresh fa-spin");
-  //       },
-  //       complete: function (jqXHR, status) {
-  //         $('#searchicon').removeClass("fa-refresh fa-spin").addClass("fa-search");
-  //       }
-  //     }
-  //   },
-  //   limit: 10
-  // });
-  // boroughsBH.initialize();
   businessesBH.initialize();
-  // museumsBH.initialize();
-  // geonamesBH.initialize();
-
+ 
   /* instantiate the typeahead UI */
   $("#searchbox").typeahead({
     minLength: 3,
     highlight: true,
     hint: false
-  // }, {
-  //   name: "Boroughs",
-  //   displayKey: "name",
-  //   source: boroughsBH.ttAdapter(),
-  //   templates: {
-  //     header: "<h4 class='typeahead-header'>Boroughs</h4>"
-  //   }
-  // }, {
-  //   name: "Theaters",
-  //   displayKey: "name",
-  //   source: theatersBH.ttAdapter(),
-  //   templates: {
-  //     header: "<h4 class='typeahead-header'><img src='assets/img/theater.png' width='24' height='28'>&nbsp;Theaters</h4>",
-  //     suggestion: Handlebars.compile(["{{name}}<br>&nbsp;<small>{{address}}</small>"].join(""))
-  //   }
   }, {
     name: "Businesses",
     displayKey: "name",
@@ -480,26 +365,10 @@ $(document).one("ajaxStop", function () {
       header: "<h4 class='typeahead-header'><img src='css/icon/Shop-128.png' width='24' height='28'>&nbsp;Businesses</h4>",
       suggestion: Handlebars.compile(["{{name}}<br>&nbsp;<small>{{address}}</small>"].join(""))
     }
-  // }, {
-  //   name: "GeoNames",
-  //   displayKey: "name",
-  //   source: geonamesBH.ttAdapter(),
-  //   templates: {
-  //     header: "<h4 class='typeahead-header'><img src='assets/img/globe.png' width='25' height='25'>&nbsp;GeoNames</h4>"
-  //   }
   }).on("typeahead:selected", function (obj, datum) {
     if (datum.source === "Boroughs") {
       map.fitBounds(datum.bounds);
     }
-    // if (datum.source === "Theaters") {
-    //   if (!map.hasLayer(theaterLayer)) {
-    //     map.addLayer(theaterLayer);
-    //   }
-    //   map.setView([datum.lat, datum.lng], 17);
-    //   if (map._layers[datum.id]) {
-    //     map._layers[datum.id].fire("click");
-    //   }
-    // }
     if (datum.source === "Businesses") {
       if (!map.hasLayer(businessLayer)) {
         map.addLayer(businessLayer);
@@ -509,9 +378,6 @@ $(document).one("ajaxStop", function () {
         map._layers[datum.id].fire("click");
       }
     }
-    // if (datum.source === "GeoNames") {
-    //   map.setView([datum.lat, datum.lng], 14);
-    // }
     if ($(".navbar-collapse").height() > 50) {
       $(".navbar-collapse").collapse("hide");
     }
